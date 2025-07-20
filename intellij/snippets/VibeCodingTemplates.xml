@@ -1,0 +1,162 @@
+<templateSet group="VibeCodingPrompts">
+  <template name="prompt-basic-code-gen" value="You are an expert [programming language] developer. Create a [function/class/module] that:&#10;- Purpose: [describe what it should do]&#10;- Inputs: [list parameters and types]&#10;- Outputs: [expected return values]&#10;- Constraints: [any limitations or requirements]&#10;- Include comprehensive error handling and documentation" description="Template for basic code generation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-feature-dev" value="I want to build [FEATURE]. Break this into steps and outline a build plan:&#10;- Goal: [specific objective]&#10;- Tech stack: [preferred technologies]&#10;- User requirements: [what users need]&#10;- Success criteria: [how to measure completion]&#10;Label each step clearly and wait for my confirmation before proceeding." description="Prompt for feature development planning" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-vibe-starter" value="Generate a minimal [language/framework] application that:&#10;- Core functionality: [main feature]&#10;- UI requirements: [basic interface needs]&#10;- Data handling: [how data flows]&#10;- Keep it simple and focused on the essential features" description="Starter prompt for Vibe Coding" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-code-review" value="Act as a senior software engineer reviewing this code:&#10;[INSERT CODE]&#10;Analyze for:&#10;1. Code quality and best practices&#10;2. Performance implications&#10;3. Security vulnerabilities&#10;4. Potential bugs or edge cases&#10;5. Maintainability concerns&#10;6. Suggest specific improvements with examples" description="Template for code review" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-bug-detection" value="Examine this [language] code for potential errors:&#10;[INSERT CODE]&#10;Expected behavior: [describe what should happen]&#10;Current issue: [what's going wrong]&#10;Identify the root cause and provide a fix with explanation." description="Prompt for bug detection" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-code-explain" value="Explain this code line by line as if I'm a junior developer:&#10;[INSERT CODE]&#10;Assume I understand basic programming but need clarity on:&#10;- What each section does&#10;- Why certain approaches were chosen&#10;- Potential limitations or concerns&#10;- Best practices demonstrated" description="Template for code explanation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-system-arch" value="Design a scalable architecture for [project description]:&#10;- User base: [expected scale]&#10;- Key features: [main functionality]&#10;- Performance requirements: [speed/load expectations]&#10;- Technology constraints: [preferred stack/limitations]&#10;Provide a high-level diagram concept and explain component interactions." description="Prompt for system architecture design" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-db-design" value="Create a database schema for [application type]:&#10;- Entities: [main data objects]&#10;- Relationships: [how they connect]&#10;- Expected queries: [common operations]&#10;- Scalability considerations: [growth expectations]&#10;Include table structures, indexes, and relationships." description="Template for database design" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-unit-test" value="Create comprehensive unit tests for this function:&#10;[INSERT FUNCTION]&#10;Test framework: [Jest/pytest/JUnit/etc.]&#10;Cover these scenarios:&#10;- Normal operation cases&#10;- Edge cases and boundary conditions&#10;- Error handling and invalid inputs&#10;- Performance with large datasets" description="Prompt for unit test generation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-test-planning" value="Generate test scenarios for [feature/component]:&#10;- Happy path scenarios&#10;- Error conditions&#10;- Edge cases I might miss&#10;- Integration points&#10;- User acceptance criteria&#10;Format as a test plan with expected outcomes." description="Prompt for test case planning" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-debug-helper" value="Help me debug this issue:&#10;Code: [INSERT PROBLEMATIC CODE]&#10;Error: [exact error message]&#10;Expected: [what should happen]&#10;Environment: [relevant details]&#10;What I've tried: [debugging steps taken]&#10;Guide me through systematic troubleshooting." description="Template for debug helper" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-perf-optimize" value="Optimize this code for better performance:&#10;[INSERT CODE]&#10;Current bottlenecks: [known issues]&#10;Performance goals: [specific targets]&#10;Constraints: [what can't change]&#10;Explain the improvements and trade-offs." description="Prompt for performance optimization" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-api-design" value="Design a RESTful API for [application domain]:&#10;- Resources: [main entities]&#10;- Operations: [CRUD and custom actions]&#10;- Authentication: [security requirements]&#10;- Response format: [JSON structure preferences]&#10;- Error handling: [how to manage failures]&#10;Include endpoint specifications and example requests/responses." description="Prompt for API design" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-api-docs" value="Create comprehensive API documentation for:&#10;[INSERT API CODE/SPEC]&#10;Include:&#10;- Endpoint descriptions&#10;- Request/response examples&#10;- Authentication requirements&#10;- Error codes and handling&#10;- Usage examples for developers" description="Prompt for API documentation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-component-create" value="Create a [React/Vue/Angular] component for [functionality]:&#10;- Props/inputs: [data it receives]&#10;- State management: [what it tracks]&#10;- User interactions: [events it handles]&#10;- Styling approach: [CSS/styled-components/etc.]&#10;- Accessibility requirements: [a11y considerations]&#10;Make it reusable and well-documented." description="Prompt for frontend component creation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-ui-implement" value="Implement this UI design as code:&#10;- Framework: [React/Vue/Angular/vanilla]&#10;- Design requirements: [visual specifications]&#10;- Interactive elements: [buttons, forms, etc.]&#10;- Responsive behavior: [mobile/desktop]&#10;- Performance considerations: [loading, animations]&#10;Focus on clean, maintainable code." description="Prompt for UI/UX implementation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-server-setup" value="Set up a [Node.js/Python/Java] server with:&#10;- Framework: [Express/Django/Spring]&#10;- Database: [PostgreSQL/MongoDB/MySQL]&#10;- Authentication: [JWT/OAuth/session-based]&#10;- Deployment: [Docker/cloud platform]&#10;- Monitoring: [logging and health checks]&#10;Include configuration and deployment scripts." description="Template for server setup" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-data-pipeline" value="Build a data processing pipeline that:&#10;- Source: [where data comes from]&#10;- Transformations: [what processing is needed]&#10;- Destination: [where to store results]&#10;- Schedule: [when to run]&#10;- Error handling: [failure management]&#10;- Monitoring: [progress tracking]" description="Prompt for data pipeline creation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-project-spec" value="Create a comprehensive project specification for:&#10;Project: [name and description]&#10;Include:&#10;- Problem statement and goals&#10;- User stories and requirements&#10;- Technical architecture overview&#10;- Development milestones&#10;- Risk assessment&#10;- Success metrics&#10;Format as a professional project document." description="Prompt for project specification" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-sprint-planning" value="Plan a development sprint for:&#10;- Goal: [sprint objective]&#10;- Duration: [timeframe]&#10;- Team capacity: [available resources]&#10;- Backlog items: [features to implement]&#10;- Acceptance criteria: [definition of done]&#10;- Risk factors: [potential blockers]&#10;Create detailed task breakdown with estimates." description="Template for sprint planning" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-readme-gen" value="Create a comprehensive README for this project:&#10;[PROJECT DETAILS]&#10;Include:&#10;- Clear project description&#10;- Installation instructions&#10;- Usage examples&#10;- API documentation (if applicable)&#10;- Contributing guidelines&#10;- License information&#10;Make it beginner-friendly and professional." description="Prompt for README generation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-tech-docs" value="Document this technical system:&#10;[SYSTEM DESCRIPTION]&#10;Cover:&#10;- Architecture overview&#10;- Component descriptions&#10;- Data flows&#10;- Configuration options&#10;- Troubleshooting guide&#10;- Maintenance procedures&#10;Target audience: [developers/ops/users]" description="Prompt for technical documentation" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-ml-model" value="Create a machine learning solution for:&#10;- Problem type: [classification/regression/clustering]&#10;- Dataset: [data characteristics]&#10;- Features: [input variables]&#10;- Target: [what to predict]&#10;- Evaluation metrics: [success measures]&#10;- Framework: [TensorFlow/PyTorch/scikit-learn]&#10;Include data preprocessing and model evaluation code." description="Prompt for ML model development" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-data-analysis" value="Analyze this dataset for [business question]:&#10;[DATASET DESCRIPTION]&#10;Perform:&#10;- Exploratory data analysis&#10;- Statistical summaries&#10;- Visualizations&#10;- Insights and recommendations&#10;- Data quality assessment&#10;Use Python with pandas, matplotlib, and seaborn." description="Template for data analysis" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-cicd-pipeline" value="Create a CI/CD pipeline for:&#10;- Application: [tech stack]&#10;- Testing: [unit/integration/e2e]&#10;- Build process: [compilation/bundling]&#10;- Deployment target: [cloud platform]&#10;- Monitoring: [health checks]&#10;- Rollback strategy: [failure handling]&#10;Use [GitHub Actions/Jenkins/GitLab CI]." description="Prompt for CI/CD pipeline" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-docker-config" value="Create Docker configuration for:&#10;- Application: [language/framework]&#10;- Dependencies: [external services]&#10;- Environment: [dev/staging/production]&#10;- Security: [user permissions, secrets]&#10;- Optimization: [image size, caching]&#10;Include Dockerfile and docker-compose.yml." description="Prompt for Docker configuration" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-security-audit" value="Perform a security audit of this code:&#10;[INSERT CODE]&#10;Check for:&#10;- Input validation issues&#10;- Authentication vulnerabilities&#10;- Authorization flaws&#10;- Data exposure risks&#10;- Injection attack vectors&#10;- Cryptographic weaknesses&#10;Provide specific remediation steps." description="Template for security audit" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-secure-coding" value="Implement secure [functionality] with:&#10;- Input sanitization&#10;- Output encoding&#10;- Error handling without information leakage&#10;- Proper authentication/authorization&#10;- Secure data storage&#10;- Audit logging&#10;Language: [programming language]&#10;Framework: [if applicable]" description="Prompt for secure coding" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-optimize" value="Improve this prompt for better AI responses:&#10;[ORIGINAL PROMPT]&#10;Make it:&#10;- More specific and actionable&#10;- Include better context&#10;- Add output format specifications&#10;- Include error handling instructions&#10;- Optimize for [specific AI tool]" description="Prompt for optimization" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-workflow-gen" value="Create a development workflow for:&#10;- Team size: [number of developers]&#10;- Project type: [web app/mobile/API/etc.]&#10;- Timeline: [project duration]&#10;- Methodology: [agile/waterfall/hybrid]&#10;- Tools: [preferred development stack]&#10;Include templates, checklists, and best practices." description="Prompt for custom workflow" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-context-dev" value="&lt;context&gt;&#10;Project: [project description]&#10;Codebase: [current state/architecture]&#10;Team: [skill levels and roles]&#10;Constraints: [time/budget/technical limitations]&#10;&lt;/context&gt;&#10;&#10;Task: [specific development task]&#10;Requirements: [detailed specifications]&#10;Success criteria: [how to measure completion]&#10;&#10;Provide solution considering the full context above." description="Prompt for context-aware development" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="prompt-iterative-refine" value="Refine this solution based on feedback:&#10;Original request: [initial requirement]&#10;Current solution: [what was implemented]&#10;Feedback: [specific issues or improvements needed]&#10;New constraints: [additional requirements]&#10;Maintain backward compatibility and explain changes." description="Template for iterative refinement" toReformat="false" toShortenLongNames="true">
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+</templateSet>
