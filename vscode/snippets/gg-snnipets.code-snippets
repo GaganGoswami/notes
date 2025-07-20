@@ -1,0 +1,437 @@
+{
+  "Basic Code Generation Template": {
+    "prefix": "prompt-basic-code-gen",
+    "body": [
+      "You are an expert [programming language] developer. Create a [function/class/module] that:",
+      "- Purpose: [describe what it should do]",
+      "- Inputs: [list parameters and types]",
+      "- Outputs: [expected return values]",
+      "- Constraints: [any limitations or requirements]",
+      "- Include comprehensive error handling and documentation"
+    ],
+    "description": "Template for basic code generation"
+  },
+  "Feature Development Prompt": {
+    "prefix": "prompt-feature-dev",
+    "body": [
+      "I want to build [FEATURE]. Break this into steps and outline a build plan:",
+      "- Goal: [specific objective]",
+      "- Tech stack: [preferred technologies]",
+      "- User requirements: [what users need]",
+      "- Success criteria: [how to measure completion]",
+      "Label each step clearly and wait for my confirmation before proceeding."
+    ],
+    "description": "Prompt for feature development planning"
+  },
+  "Vibe Coding Starter": {
+    "prefix": "prompt-vibe-starter",
+    "body": [
+      "Generate a minimal [language/framework] application that:",
+      "- Core functionality: [main feature]",
+      "- UI requirements: [basic interface needs]",
+      "- Data handling: [how data flows]",
+      "- Keep it simple and focused on the essential features"
+    ],
+    "description": "Starter prompt for Vibe Coding"
+  },
+  "Code Review Template": {
+    "prefix": "prompt-code-review",
+    "body": [
+      "Act as a senior software engineer reviewing this code:",
+      "[INSERT CODE]",
+      "Analyze for:",
+      "1. Code quality and best practices",
+      "2. Performance implications",
+      "3. Security vulnerabilities",
+      "4. Potential bugs or edge cases",
+      "5. Maintainability concerns",
+      "6. Suggest specific improvements with examples"
+    ],
+    "description": "Template for code review"
+  },
+  "Bug Detection Prompt": {
+    "prefix": "prompt-bug-detection",
+    "body": [
+      "Examine this [language] code for potential errors:",
+      "[INSERT CODE]",
+      "Expected behavior: [describe what should happen]",
+      "Current issue: [what's going wrong]",
+      "Identify the root cause and provide a fix with explanation."
+    ],
+    "description": "Prompt for bug detection"
+  },
+  "Code Explanation Template": {
+    "prefix": "prompt-code-explain",
+    "body": [
+      "Explain this code line by line as if I'm a junior developer:",
+      "[INSERT CODE]",
+      "Assume I understand basic programming but need clarity on:",
+      "- What each section does",
+      "- Why certain approaches were chosen",
+      "- Potential limitations or concerns",
+      "- Best practices demonstrated"
+    ],
+    "description": "Template for code explanation"
+  },
+  "System Architecture Prompt": {
+    "prefix": "prompt-system-arch",
+    "body": [
+      "Design a scalable architecture for [project description]:",
+      "- User base: [expected scale]",
+      "- Key features: [main functionality]",
+      "- Performance requirements: [speed/load expectations]",
+      "- Technology constraints: [preferred stack/limitations]",
+      "Provide a high-level diagram concept and explain component interactions."
+    ],
+    "description": "Prompt for system architecture design"
+  },
+  "Database Design Template": {
+    "prefix": "prompt-db-design",
+    "body": [
+      "Create a database schema for [application type]:",
+      "- Entities: [main data objects]",
+      "- Relationships: [how they connect]",
+      "- Expected queries: [common operations]",
+      "- Scalability considerations: [growth expectations]",
+      "Include table structures, indexes, and relationships."
+    ],
+    "description": "Template for database design"
+  },
+  "Unit Test Generation": {
+    "prefix": "prompt-unit-test",
+    "body": [
+      "Create comprehensive unit tests for this function:",
+      "[INSERT FUNCTION]",
+      "Test framework: [Jest/pytest/JUnit/etc.]",
+      "Cover these scenarios:",
+      "- Normal operation cases",
+      "- Edge cases and boundary conditions",
+      "- Error handling and invalid inputs",
+      "- Performance with large datasets"
+    ],
+    "description": "Prompt for unit test generation"
+  },
+  "Test Case Planning": {
+    "prefix": "prompt-test-planning",
+    "body": [
+      "Generate test scenarios for [feature/component]:",
+      "- Happy path scenarios",
+      "- Error conditions",
+      "- Edge cases I might miss",
+      "- Integration points",
+      "- User acceptance criteria",
+      "Format as a test plan with expected outcomes."
+    ],
+    "description": "Prompt for test case planning"
+  },
+  "Debug Helper Template": {
+    "prefix": "prompt-debug-helper",
+    "body": [
+      "Help me debug this issue:",
+      "Code: [INSERT PROBLEMATIC CODE]",
+      "Error: [exact error message]",
+      "Expected: [what should happen]",
+      "Environment: [relevant details]",
+      "What I've tried: [debugging steps taken]",
+      "Guide me through systematic troubleshooting."
+    ],
+    "description": "Template for debug helper"
+  },
+  "Performance Optimization": {
+    "prefix": "prompt-perf-optimize",
+    "body": [
+      "Optimize this code for better performance:",
+      "[INSERT CODE]",
+      "Current bottlenecks: [known issues]",
+      "Performance goals: [specific targets]",
+      "Constraints: [what can't change]",
+      "Explain the improvements and trade-offs."
+    ],
+    "description": "Prompt for performance optimization"
+  },
+  "API Design Prompt": {
+    "prefix": "prompt-api-design",
+    "body": [
+      "Design a RESTful API for [application domain]:",
+      "- Resources: [main entities]",
+      "- Operations: [CRUD and custom actions]",
+      "- Authentication: [security requirements]",
+      "- Response format: [JSON structure preferences]",
+      "- Error handling: [how to manage failures]",
+      "Include endpoint specifications and example requests/responses."
+    ],
+    "description": "Prompt for API design"
+  },
+  "API Documentation Generator": {
+    "prefix": "prompt-api-docs",
+    "body": [
+      "Create comprehensive API documentation for:",
+      "[INSERT API CODE/SPEC]",
+      "Include:",
+      "- Endpoint descriptions",
+      "- Request/response examples",
+      "- Authentication requirements",
+      "- Error codes and handling",
+      "- Usage examples for developers"
+    ],
+    "description": "Prompt for API documentation"
+  },
+  "Component Creation": {
+    "prefix": "prompt-component-create",
+    "body": [
+      "Create a [React/Vue/Angular] component for [functionality]:",
+      "- Props/inputs: [data it receives]",
+      "- State management: [what it tracks]",
+      "- User interactions: [events it handles]",
+      "- Styling approach: [CSS/styled-components/etc.]",
+      "- Accessibility requirements: [a11y considerations]",
+      "Make it reusable and well-documented."
+    ],
+    "description": "Prompt for frontend component creation"
+  },
+  "UI/UX Implementation": {
+    "prefix": "prompt-ui-implement",
+    "body": [
+      "Implement this UI design as code:",
+      "- Framework: [React/Vue/Angular/vanilla]",
+      "- Design requirements: [visual specifications]",
+      "- Interactive elements: [buttons, forms, etc.]",
+      "- Responsive behavior: [mobile/desktop]",
+      "- Performance considerations: [loading, animations]",
+      "Focus on clean, maintainable code."
+    ],
+    "description": "Prompt for UI/UX implementation"
+  },
+  "Server Setup Template": {
+    "prefix": "prompt-server-setup",
+    "body": [
+      "Set up a [Node.js/Python/Java] server with:",
+      "- Framework: [Express/Django/Spring]",
+      "- Database: [PostgreSQL/MongoDB/MySQL]",
+      "- Authentication: [JWT/OAuth/session-based]",
+      "- Deployment: [Docker/cloud platform]",
+      "- Monitoring: [logging and health checks]",
+      "Include configuration and deployment scripts."
+    ],
+    "description": "Template for server setup"
+  },
+  "Data Pipeline Creator": {
+    "prefix": "prompt-data-pipeline",
+    "body": [
+      "Build a data processing pipeline that:",
+      "- Source: [where data comes from]",
+      "- Transformations: [what processing is needed]",
+      "- Destination: [where to store results]",
+      "- Schedule: [when to run]",
+      "- Error handling: [failure management]",
+      "- Monitoring: [progress tracking]"
+    ],
+    "description": "Prompt for data pipeline creation"
+  },
+  "Project Specification Generator": {
+    "prefix": "prompt-project-spec",
+    "body": [
+      "Create a comprehensive project specification for:",
+      "Project: [name and description]",
+      "Include:",
+      "- Problem statement and goals",
+      "- User stories and requirements",
+      "- Technical architecture overview",
+      "- Development milestones",
+      "- Risk assessment",
+      "- Success metrics",
+      "Format as a professional project document."
+    ],
+    "description": "Prompt for project specification"
+  },
+  "Sprint Planning Template": {
+    "prefix": "prompt-sprint-planning",
+    "body": [
+      "Plan a development sprint for:",
+      "- Goal: [sprint objective]",
+      "- Duration: [timeframe]",
+      "- Team capacity: [available resources]",
+      "- Backlog items: [features to implement]",
+      "- Acceptance criteria: [definition of done]",
+      "- Risk factors: [potential blockers]",
+      "Create detailed task breakdown with estimates."
+    ],
+    "description": "Template for sprint planning"
+  },
+  "README Generator": {
+    "prefix": "prompt-readme-gen",
+    "body": [
+      "Create a comprehensive README for this project:",
+      "[PROJECT DETAILS]",
+      "Include:",
+      "- Clear project description",
+      "- Installation instructions",
+      "- Usage examples",
+      "- API documentation (if applicable)",
+      "- Contributing guidelines",
+      "- License information",
+      "Make it beginner-friendly and professional."
+    ],
+    "description": "Prompt for README generation"
+  },
+  "Technical Documentation": {
+    "prefix": "prompt-tech-docs",
+    "body": [
+      "Document this technical system:",
+      "[SYSTEM DESCRIPTION]",
+      "Cover:",
+      "- Architecture overview",
+      "- Component descriptions",
+      "- Data flows",
+      "- Configuration options",
+      "- Troubleshooting guide",
+      "- Maintenance procedures",
+      "Target audience: [developers/ops/users]"
+    ],
+    "description": "Prompt for technical documentation"
+  },
+  "Model Development Prompt": {
+    "prefix": "prompt-ml-model",
+    "body": [
+      "Create a machine learning solution for:",
+      "- Problem type: [classification/regression/clustering]",
+      "- Dataset: [data characteristics]",
+      "- Features: [input variables]",
+      "- Target: [what to predict]",
+      "- Evaluation metrics: [success measures]",
+      "- Framework: [TensorFlow/PyTorch/scikit-learn]",
+      "Include data preprocessing and model evaluation code."
+    ],
+    "description": "Prompt for ML model development"
+  },
+  "Data Analysis Template": {
+    "prefix": "prompt-data-analysis",
+    "body": [
+      "Analyze this dataset for [business question]:",
+      "[DATASET DESCRIPTION]",
+      "Perform:",
+      "- Exploratory data analysis",
+      "- Statistical summaries",
+      "- Visualizations",
+      "- Insights and recommendations",
+      "- Data quality assessment",
+      "Use Python with pandas, matplotlib, and seaborn."
+    ],
+    "description": "Template for data analysis"
+  },
+  "CI/CD Pipeline": {
+    "prefix": "prompt-cicd-pipeline",
+    "body": [
+      "Create a CI/CD pipeline for:",
+      "- Application: [tech stack]",
+      "- Testing: [unit/integration/e2e]",
+      "- Build process: [compilation/bundling]",
+      "- Deployment target: [cloud platform]",
+      "- Monitoring: [health checks]",
+      "- Rollback strategy: [failure handling]",
+      "Use [GitHub Actions/Jenkins/GitLab CI]."
+    ],
+    "description": "Prompt for CI/CD pipeline"
+  },
+  "Docker Configuration": {
+    "prefix": "prompt-docker-config",
+    "body": [
+      "Create Docker configuration for:",
+      "- Application: [language/framework]",
+      "- Dependencies: [external services]",
+      "- Environment: [dev/staging/production]",
+      "- Security: [user permissions, secrets]",
+      "- Optimization: [image size, caching]",
+      "Include Dockerfile and docker-compose.yml."
+    ],
+    "description": "Prompt for Docker configuration"
+  },
+  "Security Audit Template": {
+    "prefix": "prompt-security-audit",
+    "body": [
+      "Perform a security audit of this code:",
+      "[INSERT CODE]",
+      "Check for:",
+      "- Input validation issues",
+      "- Authentication vulnerabilities",
+      "- Authorization flaws",
+      "- Data exposure risks",
+      "- Injection attack vectors",
+      "- Cryptographic weaknesses",
+      "Provide specific remediation steps."
+    ],
+    "description": "Template for security audit"
+  },
+  "Secure Coding Prompt": {
+    "prefix": "prompt-secure-coding",
+    "body": [
+      "Implement secure [functionality] with:",
+      "- Input sanitization",
+      "- Output encoding",
+      "- Error handling without information leakage",
+      "- Proper authentication/authorization",
+      "- Secure data storage",
+      "- Audit logging",
+      "Language: [programming language]",
+      "Framework: [if applicable]"
+    ],
+    "description": "Prompt for secure coding"
+  },
+  "Prompt Optimization": {
+    "prefix": "prompt-optimize",
+    "body": [
+      "Improve this prompt for better AI responses:",
+      "[ORIGINAL PROMPT]",
+      "Make it:",
+      "- More specific and actionable",
+      "- Include better context",
+      "- Add output format specifications",
+      "- Include error handling instructions",
+      "- Optimize for [specific AI tool]"
+    ],
+    "description": "Prompt for optimization"
+  },
+  "Custom Workflow Generator": {
+    "prefix": "prompt-workflow-gen",
+    "body": [
+      "Create a development workflow for:",
+      "- Team size: [number of developers]",
+      "- Project type: [web app/mobile/API/etc.]",
+      "- Timeline: [project duration]",
+      "- Methodology: [agile/waterfall/hybrid]",
+      "- Tools: [preferred development stack]",
+      "Include templates, checklists, and best practices."
+    ],
+    "description": "Prompt for custom workflow"
+  },
+  "Context-Aware Development": {
+    "prefix": "prompt-context-dev",
+    "body": [
+      "<context>",
+      "Project: [project description]",
+      "Codebase: [current state/architecture]",
+      "Team: [skill levels and roles]",
+      "Constraints: [time/budget/technical limitations]",
+      "</context>",
+      "",
+      "Task: [specific development task]",
+      "Requirements: [detailed specifications]",
+      "Success criteria: [how to measure completion]",
+      "",
+      "Provide solution considering the full context above."
+    ],
+    "description": "Prompt for context-aware development"
+  },
+  "Iterative Refinement Template": {
+    "prefix": "prompt-iterative-refine",
+    "body": [
+      "Refine this solution based on feedback:",
+      "Original request: [initial requirement]",
+      "Current solution: [what was implemented]",
+      "Feedback: [specific issues or improvements needed]",
+      "New constraints: [additional requirements]",
+      "Maintain backward compatibility and explain changes."
+    ],
+    "description": "Template for iterative refinement"
+  }
+}
