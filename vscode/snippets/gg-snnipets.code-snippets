@@ -539,5 +539,278 @@
       "  - File: src/components/__tests__/[ComponentName].test.tsx"
     ],
     "description": "Template for component testing"
+  },
+  "Custom Hooks Template": {
+    "prefix": "prompt-react-custom-hooks",
+    "body": [
+      "Context: React 18 hooks, TypeScript.",
+      "Goal: Create a custom hook [useSomething] that [functionality description].",
+      "Parameters: [param1: type, param2?: type].",
+      "Returns: { [property1]: type, [property2]: function }",
+      "Examples:",
+      "  Usage: const { [property], [method] } = [useSomething]([params])",
+      "  Behavior: [describe what happens]",
+      "Constraints:",
+      "  - File: src/hooks/[useSomething].ts",
+      "  - Handle cleanup in useEffect",
+      "  - Include error handling"
+    ],
+    "description": "Template for custom React hooks"
+  },
+  "Performance Optimization Template": {
+    "prefix": "prompt-react-performance",
+    "body": [
+      "Context: React performance optimization, memo, useMemo, useCallback.",
+      "Goal: Optimize [ComponentName] component that [performance issue description].",
+      "Current issues:",
+      "  - [Issue 1: e.g., unnecessary re-renders]",
+      "  - [Issue 2: e.g., expensive calculations]",
+      "Solutions needed:",
+      "  - [Solution approach]",
+      "Examples:",
+      "  Before: [current behavior]",
+      "  After: [optimized behavior]",
+      "Constraints:",
+      "  - Maintain existing functionality",
+      "  - Use React.memo, useMemo, useCallback appropriately"
+    ],
+    "description": "Template for React performance optimization"
+  },
+  "Context Provider Template": {
+    "prefix": "prompt-react-context-provider",
+    "body": [
+      "Context: React Context API, TypeScript.",
+      "Goal: Create a [SomethingContext] provider for [data/functionality description].",
+      "Context value: { [property1]: type, [method1]: function }",
+      "Provider props: { children: ReactNode, [optionalProp]?: type }",
+      "Examples:",
+      "  Provider: <[Something]Provider>[children]</[Something]Provider>",
+      "  Consumer: const { [property], [method] } = use[Something]()",
+      "Constraints:",
+      "  - File: src/contexts/[Something]Context.tsx",
+      "  - Include custom hook for consuming context",
+      "  - Handle undefined context gracefully"
+    ],
+    "description": "Template for React Context providers"
+  },
+  "Error Boundary Template": {
+    "prefix": "prompt-react-error-boundary",
+    "body": [
+      "Context: React Error Boundaries, error handling, logging.",
+      "Goal: Create an error boundary that [specific error handling behavior].",
+      "Features:",
+      "  - Catch JavaScript errors in [scope description]",
+      "  - Display [fallback UI description]",
+      "  - Log errors to [logging service]",
+      "Examples:",
+      "  Error: [example error scenario]",
+      "  Fallback: [what user sees]",
+      "Constraints:",
+      "  - File: src/components/ErrorBoundary.tsx",
+      "  - Class component with componentDidCatch",
+      "  - Include retry mechanism"
+    ],
+    "description": "Template for React Error Boundaries"
+  },
+  "Higher Order Component Template": {
+    "prefix": "prompt-react-hoc",
+    "body": [
+      "Context: Higher Order Components, component composition.",
+      "Goal: Create a HOC [withSomething] that [enhancement description].",
+      "Enhancement: [what functionality it adds]",
+      "Props injected: { [prop1]: type, [prop2]: function }",
+      "Examples:",
+      "  Usage: const Enhanced = [withSomething]([OriginalComponent])",
+      "  Result: [describe enhanced behavior]",
+      "Constraints:",
+      "  - File: src/hocs/[withSomething].tsx",
+      "  - Preserve original component props",
+      "  - Handle ref forwarding"
+    ],
+    "description": "Template for Higher Order Components"
+  },
+  "Animation Components Template": {
+    "prefix": "prompt-react-animation",
+    "body": [
+      "Context: Framer Motion / React Transition Group, smooth animations.",
+      "Goal: Create animated [ComponentName] with [animation description].",
+      "Animations:",
+      "  - [Animation 1: e.g., fade in/out]",
+      "  - [Animation 2: e.g., slide transitions]",
+      "Triggers: [what triggers the animations]",
+      "Examples:",
+      "  State change: [trigger] → [animation result]",
+      "Constraints:",
+      "  - Smooth 60fps animations",
+      "  - Respect prefers-reduced-motion",
+      "  - Include animation cleanup"
+    ],
+    "description": "Template for animated React components"
+  },
+  "Data Fetching Template": {
+    "prefix": "prompt-react-data-fetching",
+    "body": [
+      "Context: React Query / SWR, data fetching patterns.",
+      "Goal: Implement data fetching for [data description] with [caching/sync requirements].",
+      "Endpoints:",
+      "  - [GET /endpoint]: [description]",
+      "  - [POST /endpoint]: [description]",
+      "Features:",
+      "  - Loading states, error handling",
+      "  - [Caching strategy]",
+      "  - [Optimistic updates]",
+      "Examples:",
+      "  Query: [queryKey] → [data shape]",
+      "  Mutation: [mutationFn] → [result]",
+      "Constraints:",
+      "  - File: src/hooks/[useDataHook].ts",
+      "  - Handle offline scenarios"
+    ],
+    "description": "Template for data fetching with caching"
+  },
+  "Component Library Template": {
+    "prefix": "prompt-react-component-library",
+    "body": [
+      "Context: Storybook, component library development.",
+      "Goal: Create [ComponentName] for design system with [design requirements].",
+      "Variants: [size/color/style variations]",
+      "Props API: [comprehensive prop interface]",
+      "Documentation:",
+      "  - Storybook stories for each variant",
+      "  - Usage examples and guidelines",
+      "Examples:",
+      "  Basic: <[ComponentName] [basicProps] />",
+      "  Advanced: <[ComponentName] [advancedProps] />",
+      "Constraints:",
+      "  - Follow design system principles",
+      "  - Include prop validation",
+      "  - Export from index.ts"
+    ],
+    "description": "Template for design system components"
+  },
+  "Micro Frontend Template": {
+    "prefix": "prompt-react-microfrontend",
+    "body": [
+      "Context: Module Federation, micro frontend architecture.",
+      "Goal: Create [MicroAppName] that [specific functionality] and integrates with [host app].",
+      "Exposed modules:",
+      "  - [Module1]: [description]",
+      "  - [Module2]: [description]",
+      "Integration:",
+      "  - Host app imports via [import syntax]",
+      "  - Shared dependencies: [list]",
+      "Examples:",
+      "  Standalone: [micro app behavior]",
+      "  Integrated: [behavior within host]",
+      "Constraints:",
+      "  - Webpack Module Federation config",
+      "  - Independent deployment capability"
+    ],
+    "description": "Template for micro frontend components"
+  },
+  "WebRTC Integration Template": {
+    "prefix": "prompt-react-webrtc",
+    "body": [
+      "Context: WebRTC API, real-time communication.",
+      "Goal: Implement [communication feature] with [peer connection requirements].",
+      "Features:",
+      "  - [Video/Audio/Data] streaming",
+      "  - Peer connection management",
+      "  - [Signaling server integration]",
+      "Events:",
+      "  - onConnect, onDisconnect, onDataReceive",
+      "Examples:",
+      "  Connection: [how peers connect]",
+      "  Data flow: [how data is exchanged]",
+      "Constraints:",
+      "  - Handle ICE candidates properly",
+      "  - Include error recovery",
+      "  - Support multiple browsers"
+    ],
+    "description": "Template for WebRTC integration"
+  },
+  "PWA Features Template": {
+    "prefix": "prompt-react-pwa",
+    "body": [
+      "Context: Progressive Web App, service workers, offline capabilities.",
+      "Goal: Add PWA features to [AppName] including [offline functionality].",
+      "Features:",
+      "  - Service worker for [caching strategy]",
+      "  - Offline fallback pages",
+      "  - Push notifications",
+      "  - App installation prompt",
+      "Manifest:",
+      "  - App icons, theme colors",
+      "  - Display modes and orientation",
+      "Examples:",
+      "  Offline: [what works without internet]",
+      "  Notification: [when/what notifications sent]",
+      "Constraints:",
+      "  - Follow PWA best practices",
+      "  - Handle cache invalidation"
+    ],
+    "description": "Template for PWA implementation"
+  },
+  "Accessibility Enhancement Template": {
+    "prefix": "prompt-react-accessibility",
+    "body": [
+      "Context: WCAG 2.1 AA compliance, screen readers, keyboard navigation.",
+      "Goal: Make [ComponentName] fully accessible with [specific a11y requirements].",
+      "ARIA attributes:",
+      "  - [aria-label, aria-describedby, role, etc.]",
+      "Keyboard support:",
+      "  - [Tab, Enter, Escape, Arrow keys behavior]",
+      "Screen reader:",
+      "  - [Announcements and descriptions]",
+      "Examples:",
+      "  Keyboard: [Tab] → [focus behavior]",
+      "  Screen reader: announces \"[text]\"",
+      "Constraints:",
+      "  - Test with NVDA/JAWS/VoiceOver",
+      "  - Color contrast ratio 4.5:1 minimum",
+      "  - Focus indicators visible"
+    ],
+    "description": "Template for accessibility improvements"
+  },
+  "Internationalization Template": {
+    "prefix": "prompt-react-i18n",
+    "body": [
+      "Context: react-i18next, multiple language support.",
+      "Goal: Add internationalization to [ComponentName/Feature] supporting [languages list].",
+      "Translation keys:",
+      "  - [namespace].[key]: [description]",
+      "Features:",
+      "  - Language switching",
+      "  - RTL support for [Arabic/Hebrew]",
+      "  - Number/date formatting",
+      "Examples:",
+      "  Key: t('[namespace].[key]') → [translated text]",
+      "  Interpolation: t('[key]', { [variable]: [value] })",
+      "Constraints:",
+      "  - File: src/locales/[lang]/[namespace].json",
+      "  - Lazy load translation files",
+      "  - Handle missing translations gracefully"
+    ],
+    "description": "Template for internationalization"
+  },
+  "Code Splitting Template": {
+    "prefix": "prompt-react-code-splitting",
+    "body": [
+      "Context: React.lazy, Suspense, dynamic imports.",
+      "Goal: Implement code splitting for [routes/components] to reduce [bundle size/load time].",
+      "Split points:",
+      "  - [Route/Component 1]: [why split here]",
+      "  - [Route/Component 2]: [why split here]",
+      "Loading strategy:",
+      "  - Suspense fallback: [loading UI]",
+      "  - Error boundary for chunk load failures",
+      "Examples:",
+      "  Import: const [Component] = lazy(() => import('[path]'))",
+      "  Usage: <Suspense fallback={[loading]}><[Component] /></Suspense>",
+      "Constraints:",
+      "  - Preload critical chunks",
+      "  - Handle network failures gracefully"
+    ],
+    "description": "Template for code splitting implementation"
   }
 }
