@@ -433,5 +433,111 @@
       "Maintain backward compatibility and explain changes."
     ],
     "description": "Template for iterative refinement"
+  },
+  "UI Components Template": {
+    "prefix": "prompt-react-ui-component",
+    "body": [
+      "Context: React 18 with Tailwind CSS, functional components.",
+      "Goal: Create a reusable [ComponentName] component that [describe functionality].",
+      "Props: [prop1:type, prop2:type, children:ReactNode].",
+      "Accessibility: use [specific ARIA attributes and roles].",
+      "Examples:",
+      "  Input: { [example props] }",
+      "  Output: <[ComponentName]>…</[ComponentName]>",
+      "Constraints:",
+      "  - File: src/components/[ComponentName].tsx",
+      "  - Export default",
+      "  - 2-space indent"
+    ],
+    "description": "Template for creating reusable UI components"
+  },
+  "Pages and Routing Template": {
+    "prefix": "prompt-react-routing",
+    "body": [
+      "Context: React Router v6, lazy loading, code splitting.",
+      "Goal: Define a page at path \"[/route-path]\" with [routing logic description].",
+      "Requirements:",
+      "  - [Authentication/protection requirements]",
+      "  - Use <Navigate> for redirects.",
+      "Examples:",
+      "  Input: [condition/state]",
+      "  Output: [expected component/redirect]",
+      "Constraints:",
+      "  - File: src/pages/[PageName].tsx",
+      "  - Add route in src/AppRoutes.tsx"
+    ],
+    "description": "Template for page components and routing logic"
+  },
+  "Forms and Validation Template": {
+    "prefix": "prompt-react-form-validation",
+    "body": [
+      "Context: React Hook Form, Yup schema validation.",
+      "Goal: Build a [FormName] with [list fields] and client-side validation.",
+      "Requirements:",
+      "  - [field1]: [validation rules].",
+      "  - [field2]: [validation rules].",
+      "Examples:",
+      "  Input: { [invalid example data] }",
+      "  Output: show errors under fields.",
+      "Constraints:",
+      "  - Use useForm from 'react-hook-form'.",
+      "  - Schema defined via Yup."
+    ],
+    "description": "Template for form components with validation"
+  },
+  "State Management Template": {
+    "prefix": "prompt-react-state-management",
+    "body": [
+      "Context: Zustand for global state, immutable updates.",
+      "Goal: Create a store for [store purpose] state.",
+      "State: { [stateProperty]: [type] }",
+      "Actions: [action1, action2, action3].",
+      "Examples:",
+      "  Action: [actionName]({ [parameters] })",
+      "  New state: { [updated state] }",
+      "Constraints:",
+      "  - File: src/store/[storeName].ts"
+    ],
+    "description": "Template for state management with Zustand"
+  },
+  "Theme Configuration Template": {
+    "prefix": "prompt-react-theme-config",
+    "body": [
+      "Context: Styled-components with ThemeProvider.",
+      "Goal: Define a [theme type] theme with [list theme properties].",
+      "Theme shape: { [property]: [type] }",
+      "Examples:",
+      "  [Theme variant]: { [example values] }",
+      "Constraints:",
+      "  - File: src/theme/index.ts"
+    ],
+    "description": "Template for theme configuration"
+  },
+  "API Integration Template": {
+    "prefix": "prompt-react-api-integration",
+    "body": [
+      "Context: Axios instance in src/api/client.ts, baseURL from env.",
+      "Goal: Create [serviceName] with [operation type] methods: [method1, method2, method3].",
+      "Examples:",
+      "  [methodName](): returns [return type] via [HTTP method] '[endpoint]'.",
+      "Constraints:",
+      "  - Use async/await.",
+      "  - Handle errors with try/catch."
+    ],
+    "description": "Template for API service integration"
+  },
+  "Test Cases Template": {
+    "prefix": "prompt-react-test-cases",
+    "body": [
+      "Context: Jest + React Testing Library.",
+      "Goal: Write tests for <[ComponentName]> component.",
+      "Requirements:",
+      "  - Mock [dependencies/functions] and [validation/behavior].",
+      "Examples:",
+      "  [Test scenario description and assertions].",
+      "Constraints:",
+      "  - File: src/components/__tests__/[ComponentName].test.tsx"
+    ],
+    "description": "Template for component testing"
   }
 }
