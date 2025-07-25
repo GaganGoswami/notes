@@ -1,4 +1,4 @@
-Based on my research, I'll generate comprehensive Vibe Coding prompts for the College Admission & Sponsorship Journey Guide application. Here are structured prompts covering all features:
+
 
 # Vibe Coding Prompts for College Journey Guide Application
 
@@ -409,26 +409,3 @@ Build data import/export features with:
 
 Include format validation and data transformation capabilities.
 ```
-
-Each prompt is designed to be specific, actionable, and focused on a single feature or component. They follow vibe coding best practices by providing clear context, specific requirements, and measurable outcomes while maintaining the iterative, AI-collaborative development approach[1][2][3][4][5][6].
-
-[1] https://visualstudiomagazine.com/articles/2025/06/05/visual-studio-toolbox-top-vibe-coding-extensions-for-vs-code.aspx
-[2] https://github.com/jmrecodes/HackMD-notes/blob/main/Prompt-Engineering-Guide-for-AI-Coding-Assistants.md
-[3] https://github.com/analyticalrohit/awesome-vibe-coding-guide
-[4] https://gist.github.com/snoble/0d22c9409f69b5d8c37cfbd0216942c1
-[5] https://dev.to/forgecode/12-lessons-from-ai-pair-programming-180-days-with-ai-zero-hype-2ijh
-[6] https://dev.to/sai_samineni/vibe-coding-with-ai-agents-what-actually-works-jnm
-[7] https://marketplace.visualstudio.com/items?itemName=Deepgram.vibe-coder
-[8] https://bas.codes/posts/vibe-coding-vscode-extension
-[9] https://www.reddit.com/r/developersIndia/comments/1jagt7l/i_built_a_simple_vscode_extension_to_help_with/
-[10] https://marketplace.visualstudio.com/items?itemName=PromptDC.promptdc-vscode
-[11] https://marketplace.visualstudio.com/items?itemName=akosyakov.myprompts
-[12] https://hackmd.io/@jmrecodes/S1V3buxXge
-[13] https://github.com/TylerLeonhardt/vscode-vibe/blob/main/README.md
-[14] https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions
-[15] https://datasciencedojo.com/blog/vibe-coding/
-[16] https://github.com/deepgram/vibe_coder
-[17] https://marketplace.visualstudio.com/items?itemName=VibeMode.vibe-mode
-[18] https://addyo.substack.com/p/the-prompt-engineering-playbook-for
-[19] https://creatoreconomy.so/p/12-rules-to-vibe-code-without-frustration
-[20] https://vibecoder.me/tools/vs-code
