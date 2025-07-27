@@ -409,3 +409,83 @@ Build data import/export features with:
 
 Include format validation and data transformation capabilities.
 ```
+
+---
+
+## 🎨 Complete CSS Design System
+
+### **Color Tokens (Light Mode)**
+```css
+/* Primitive Colors */
+--color-white: rgba(255, 255, 255, 1);
+--color-black: rgba(0, 0, 0, 1);
+--color-cream-50: rgba(252, 252, 249, 1);
+--color-cream-100: rgba(255, 255, 253, 1);
+--color-gray-200: rgba(245, 245, 245, 1);
+--color-gray-300: rgba(167, 169, 169, 1);
+--color-gray-400: rgba(119, 124, 124, 1);
+--color-slate-500: rgba(98, 108, 113, 1);
+--color-brown-600: rgba(94, 82, 64, 1);
+--color-charcoal-700: rgba(31, 33, 33, 1);
+--color-charcoal-800: rgba(38, 40, 40, 1);
+--color-slate-900: rgba(19, 52, 59, 1);
+--color-teal-300: rgba(50, 184, 198, 1);
+--color-teal-400: rgba(45, 166, 178, 1);
+--color-teal-500: rgba(33, 128, 141, 1);
+--color-teal-600: rgba(29, 116, 128, 1);
+--color-teal-700: rgba(26, 104, 115, 1);
+--color-teal-800: rgba(41, 150, 161, 1);
+--color-red-400: rgba(255, 84, 89, 1);
+--color-red-500: rgba(192, 21, 47, 1);
+--color-orange-400: rgba(230, 129, 97, 1);
+--color-orange-500: rgba(168, 75, 47, 1);
+
+/* Semantic Colors (Light) */
+--color-background: var(--color-cream-50);
+--color-surface: var(--color-cream-100);
+--color-text: var(--color-slate-900);
+--color-text-secondary: var(--color-slate-500);
+--color-primary: var(--color-teal-500);
+--color-primary-hover: var(--color-teal-600);
+--color-primary-active: var(--color-teal-700);
+```
+
+### **Dark Mode Overrides**
+```css
+[data-color-scheme="dark"] {
+  --color-background: var(--color-charcoal-700);
+  --color-surface: var(--color-charcoal-800);
+  --color-text: var(--color-gray-200);
+  --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+  --color-primary: var(--color-teal-300);
+  --color-primary-hover: var(--color-teal-400);
+  --color-primary-active: var(--color-teal-800);
+}
+```
+
+### **Typography System**
+```css
+--font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+--font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+--font-size-xs: 11px;
+--font-size-sm: 12px;
+--font-size-base: 14px;
+--font-size-md: 14px;
+--font-size-lg: 16px;
+--font-size-xl: 18px;
+--font-size-2xl: 20px;
+--font-size-3xl: 24px;
+--font-size-4xl: 30px;
+--font-weight-normal: 400;
+--font-weight-medium: 500;
+--font-weight-semibold: 550;
+--font-weight-bold: 600;
+```
+
+### **Spacing & Layout**
+```css
+--space-0: 0; --space-1: 1px; --space-2: 2px; --space-4: 4px;
+--space-6: 6px; --space-8: 8px; --space-10: 10px; --space-12: 12px;
+--space-16: 16px; --space-20: 20px; --space-24: 24px; --space-32: 32px;
+--radius-sm: 6px; --radius-base: 8px; --radius-md: 10px; --radius-lg: 12px; --radius-full: 9999px;
+```
