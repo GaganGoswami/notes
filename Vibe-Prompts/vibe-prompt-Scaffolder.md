@@ -1,4 +1,4 @@
-# 🔥 Complete Project Generation Prompt - Vibe Scaffolder
+# 🔥 GenAppXpress
 
 ## 📋 Project Overview
 
