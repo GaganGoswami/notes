@@ -1,4 +1,4 @@
-# Complete Recreation Prompt: College Admission & Sponsorship Journey Guide
+# Journey2College : College Admission & Sponsorship Journey Guide
 
 ## Project Overview
 Create a comprehensive full-stack College Admission & Sponsorship Journey Guide application with React + TypeScript frontend and Spring Boot backend. The application helps students navigate the college admission process and find scholarship opportunities.
