@@ -6,7 +6,7 @@ Update application and generate I want to build a **next-gen interactive present
 
 - Full-page **scrollable slide layout**, sourced from **Markdown** or **MDX**.
 - Each slide should support Markdown formatting, headings, lists, code, media embeds, etc.
-- Responsive minimalist layout inspired by [ryder-and-davis.com](https://www.ryder-and-davis.com).
+- Responsive minimalist layout
 - **Sticky footer** on every slide with customizable branding or slide meta.
 - **Scroll snapping** transitions, smooth page behavior, and responsive design.
 - Support for **Static Site Generation (SSG)** and **SSR**.
