@@ -1,4 +1,5 @@
-Update application and generate I want to build a **next-gen interactive presentation platform** using **Next.js**, with the following major features:
+# FlowPitch : a **next-gen interactive presentation platform** using **Next.js**, with the following major features:
+
 
 ---
 
@@ -92,4 +93,4 @@ Update application and generate I want to build a **next-gen interactive present
 
 ---
 
-Generate the entire solution with modular, maintainable code. Optimize for extensibility and performance.
+Generate the entire solution with modular, maintainable code. Optimize for extensibility and performance. Generate fully working application. 
