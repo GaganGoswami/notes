@@ -1,0 +1,30 @@
+You are an expert full-stack engineer specializing in AI-native productivity apps and delightful user experiences (“vibe coding”). Generate a complete, feature-rich, TypeScript React (Vite or Next.js) application called "Proposal Intelligence Assistant" for pre-sales/proposal teams. Prioritize clean, modern, maintainable code and best practices. Use a modular architecture, Tailwind CSS for styling, and TypeScript types for data safety. All data can be client-side mock/sample data and must be reusable as clean interfaces. Do not use any server-side code.
+
+**Feature Requirements:**
+- **Dashboard**: Show proposal analytics (e.g., stats cards, monthly chart, recent proposals table).
+- **PDF Upload**: Drag-and-drop file upload supporting PDF/DOCX with section parsing simulation and progress indicator.
+- **RFP Parsing**: Visual extraction of sections: Introduction, Scope, Deliverables, Timeline, etc. Show sample parsed data.
+- **Semantic Generation**: Form for configuring AI prompt (tone, focus), then generate simulated SOW & Executive Summary side-by-side to RFP sections.
+- **Proposal Library**: Searchable, filterable grid/list of past proposals, similarity score visualization, semantic search simulation.
+- **Editor**: Rich text editor (TipTap or Quill) with formatting toolbar, version history, and export (PDF/DOCX).
+- **Settings**: Profile, template & prompt management, team/roles, dark-light mode toggle.
+- **Global UI**: Responsive nav bar, mobile support, modal dialogs, toast notifications, context menus, smooth page/load animations.
+- **Data**: Mock proposal/user/template/sample RFP data as TypeScript types/interfaces; everything local, not backend.
+- **Role-based UI**: Admin/Manager/User simulated permissions (UI states only).
+- **Accessibility**: ARIA labels, keyboard navigation where relevant.
+
+**Style/Vibe:**
+- Cohesive Tailwind CSS theme — modern, blue/gray/green palette, readable fonts, spaced layouts.
+- Subtle animated transitions between major page states.
+- Intuitive UX flows; clear CTAs for each core action (Upload, Generate, Review/Edit, Export).
+- No lorem-ipsum: use realistic mock data for proposals, users, templates, RFP sections, and analytics.
+- Clean code comments and clear folder/component structure (e.g., /components, /pages, /hooks, /types).
+
+**Extra:**
+- Show full sample code and file structure in the output.
+- Include README with setup instructions.
+- All features should be functional in the browser, even if simulated with mock data—no backend required.
+
+**Summary:**  
+Generate a full-stack-quality, client-only, React + TypeScript + Tailwind CSS app that mimics an intelligent proposal automation platform, with dashboard, file upload, proposal generation/reuse, rich editing, and fantastic vibes in UI/UX.
+
