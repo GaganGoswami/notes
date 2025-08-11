@@ -1,5 +1,5 @@
 # Demo Quick Reference Guide
-*Essential Presenter Cheat Sheet for Proposal Intelligence Assistant*
+*Essential Presenter Cheat Sheet for ProposalAI*
 
 ---
 

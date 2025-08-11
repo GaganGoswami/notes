@@ -1,4 +1,4 @@
-# Demo Script: Proposal Intelligence Assistant
+# Demo Script: ProposalAI
 *Comprehensive Presenter Guide with Talking Points and Actions*
 
 ---
@@ -46,7 +46,7 @@
 **Tone**: Confident, professional, enthusiastic
 
 **Speaking Script**:
-> "Good [morning/afternoon], and welcome to the Proposal Intelligence Assistant demonstration. I'm [Your Name], and today I'm going to show you how this comprehensive TypeScript React application transforms the way pre-sales teams create, manage, and win proposals.
+> "Good [morning/afternoon], and welcome to the ProposalAI demonstration. I'm [Your Name], and today I'm going to show you how this comprehensive TypeScript React application transforms the way pre-sales teams create, manage, and win proposals.
 >
 > What you're seeing is a modern, client-only application that eliminates the complexity of traditional proposal management while adding powerful AI capabilities that your team will love."
 
@@ -281,7 +281,7 @@
 **Tone**: Innovative, exciting, game-changing
 
 **Speaking Script**:
-> "This is where Proposal Intelligence Assistant becomes truly revolutionary. Our AI content generation doesn't just save time - it helps you create more compelling, targeted proposals."
+> "This is where ProposalAI becomes truly revolutionary. Our AI content generation doesn't just save time - it helps you create more compelling, targeted proposals."
 
 **Demo Actions**:
 
@@ -690,4 +690,4 @@
 
 ---
 
-*This demo script ensures consistent, professional presentation of the Proposal Intelligence Assistant while allowing for natural presenter style and audience adaptation.*
+*This demo script ensures consistent, professional presentation of the ProposalAI while allowing for natural presenter style and audience adaptation.*

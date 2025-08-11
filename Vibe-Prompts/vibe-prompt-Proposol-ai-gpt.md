@@ -1,5 +1,5 @@
 You are an expert full-stack engineer specializing in AI-native productivity platforms and beautiful UI/UX ("vibe coding").  
-Create a **complete, client-only TypeScript React application** (Vite or Next.js) called **"Proposal Intelligence Assistant"** for pre-sales and proposal management workflows.
+Create a **complete, client-only TypeScript React application** (Vite or Next.js) called **"ProposalAI"** for pre-sales and proposal management workflows.
 
 ---
 

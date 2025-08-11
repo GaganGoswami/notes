@@ -1,4 +1,4 @@
-# Video Recording Plan: Proposal Intelligence Assistant Demo
+# Video Recording Plan: ProposalAI Demo
 
 ##  Video Overview
 
@@ -43,7 +43,7 @@
 ### **Scene 1: Introduction & Dashboard (1-2 minutes)**
 
 **Narration:**
-> "Welcome to the Proposal Intelligence Assistant - a comprehensive solution for managing your pre-sales proposal process. Let's start with the dashboard overview."
+> "Welcome to the ProposalAI - a comprehensive solution for managing your pre-sales proposal process. Let's start with the dashboard overview."
 
 **Actions:**
 1. **Landing on Dashboard**
