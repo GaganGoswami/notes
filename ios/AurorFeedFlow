@@ -1,0 +1,355 @@
+# Plan: AuroraFeedFlow — Full iOS/iPadOS RSS Reader
+
+## Context
+- Existing project: fresh SwiftUI boilerplate (AuroraFeedFlowApp.swift + ContentView.swift)
+- Target: iOS + iPadOS, Swift 6, SwiftUI, Combine, CloudKit, CoreData
+- Style goal: FEEED app — minimal, typography-first, magazine article reader
+
+---
+
+## Architecture Overview (ASCII)
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                        AuroraFeedFlow App                          │
+├────────────────────────────────────────────────────────────────────┤
+│  UI Layer (SwiftUI)                                                │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐             │
+│  │FeedList  │ │Article   │ │Sidebar   │ │Settings  │             │
+│  │  View    │ │ Reader   │ │  Menu    │ │  View    │             │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘             │
+├────────────────────────────────────────────────────────────────────┤
+│  ViewModel Layer (MVVM + Combine + @Observable)                    │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐             │
+│  │ FeedVM   │ │ArticleVM │ │ MenuVM   │ │SettingsVM│             │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘             │
+├────────────────────────────────────────────────────────────────────┤
+│  Service Layer                                                     │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐             │
+│  │FeedParser│ │CloudKit  │ │Network   │ │ Search   │             │
+│  │ Engine   │ │  Sync    │ │ Client   │ │ Engine   │             │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘             │
+├────────────────────────────────────────────────────────────────────┤
+│  Persistence Layer                                                 │
+│  ┌────────────────────────────────────────────────────────┐       │
+│  │   CoreData + NSPersistentCloudKitContainer             │       │
+│  │   (CDFeed · CDFeedItem · CDCustomMenu · CDFolder)      │       │
+│  └────────────────────────────────────────────────────────┘       │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Project File Structure
+
+```
+AuroraFeedFlow/
+├── App/
+│   ├── AuroraFeedFlowApp.swift        ← entry point, CloudKit setup, env injection
+│   ├── AppCoordinator.swift           ← navigation routing for iOS/iPad
+│   └── AppEnvironment.swift           ← global EnvironmentObject container
+│
+├── Core/
+│   ├── Models/
+│   │   ├── Feed.swift                 ← value type + CoreData bridging
+│   │   ├── FeedItem.swift
+│   │   ├── FeedCollection.swift       ← folder / group
+│   │   ├── CustomMenu.swift           ← user-defined smart filter
+│   │   ├── Bookmark.swift
+│   │   └── UserPreferences.swift
+│   ├── Protocols/
+│   │   ├── FeedParseable.swift
+│   │   ├── Syncable.swift
+│   │   └── Searchable.swift
+│   └── Extensions/
+│       ├── Date+Formatting.swift
+│       ├── String+HTML.swift
+│       └── URL+Feed.swift
+│
+├── Modules/
+│   ├── FeedParser/
+│   │   ├── FeedParserEngine.swift     ← dispatches to RSS/Atom/JSON parser
+│   │   ├── RSSParser.swift            ← XMLParser-based
+│   │   ├── AtomParser.swift
+│   │   ├── JSONFeedParser.swift       ← Codable JSON Feed 1.1
+│   │   └── OPMLParser.swift           ← import/export
+│   ├── Networking/
+│   │   ├── NetworkClient.swift        ← async/await URLSession wrapper
+│   │   ├── NetworkReachability.swift  ← NWPathMonitor
+│   │   └── ImageLoader.swift          ← progressive, cached
+│   ├── Persistence/
+│   │   ├── PersistenceController.swift
+│   │   ├── AuroraFeedFlow.xcdatamodeld
+│   │   ├── CDFeed+CoreDataClass.swift
+│   │   ├── CDFeedItem+CoreDataClass.swift
+│   │   ├── CDCustomMenu+CoreDataClass.swift
+│   │   └── CDFolder+CoreDataClass.swift
+│   ├── Sync/
+│   │   ├── CloudKitSyncEngine.swift
+│   │   ├── SyncConflictResolver.swift ← server-wins + merge rules
+│   │   ├── SyncStatusMonitor.swift
+│   │   └── ChangeTracker.swift        ← debounced write coalescing
+│   ├── Search/
+│   │   ├── SearchEngine.swift
+│   │   └── FuzzyMatcher.swift
+│   ├── BackgroundRefresh/
+│   │   ├── BackgroundRefreshScheduler.swift ← BGTaskScheduler
+│   │   └── RefreshOperation.swift
+│   └── Theme/
+│       ├── ThemeManager.swift
+│       ├── ColorPalette.swift
+│       ├── Typography.swift
+│       └── AnimationConstants.swift
+│
+├── Features/
+│   ├── FeedList/
+│   │   ├── FeedListView.swift
+│   │   ├── FeedListViewModel.swift
+│   │   ├── FeedCard.swift             ← vertical card with shadow
+│   │   ├── ArticleRowView.swift
+│   │   └── SectionHeaderView.swift    ← recency-based grouping
+│   ├── ArticleReader/
+│   │   ├── ArticleReaderView.swift    ← immersive reader, pull-to-dismiss
+│   │   ├── ArticleReaderViewModel.swift
+│   │   ├── ArticleWebView.swift       ← WKWebView for full article
+│   │   └── ReaderToolbar.swift
+│   ├── Sidebar/
+│   │   ├── SidebarView.swift
+│   │   ├── SidebarViewModel.swift
+│   │   └── SidebarMenuRow.swift
+│   ├── CustomMenu/
+│   │   ├── MenuBuilderView.swift
+│   │   ├── MenuBuilderViewModel.swift
+│   │   └── FilterEditorView.swift     ← date/tag/type filter composer
+│   ├── Bookmarks/
+│   │   ├── BookmarksView.swift
+│   │   └── BookmarksViewModel.swift
+│   ├── Settings/
+│   │   ├── SettingsView.swift
+│   │   ├── SettingsViewModel.swift
+│   │   ├── FontSettingsView.swift
+│   │   ├── ThemeSettingsView.swift
+│   │   └── SyncSettingsView.swift
+│   └── OPML/
+│       ├── OPMLImportView.swift
+│       └── OPMLExportView.swift
+│
+├── Shared/
+│   ├── Components/
+│   │   ├── ProgressiveImageView.swift ← async image w/ placeholder
+│   │   ├── UnreadBadge.swift
+│   │   ├── LoadingView.swift
+│   │   ├── EmptyStateView.swift
+│   │   └── IconColorPicker.swift      ← SF Symbol + color for menus
+│   └── Modifiers/
+│       ├── CardShadowModifier.swift
+│       ├── SpringAnimationModifier.swift
+│       └── AdaptiveLayoutModifier.swift
+│
+└── Tests/
+    ├── FeedParserTests.swift
+    ├── SyncLogicTests.swift
+    ├── ViewModelTests.swift
+    └── DatabaseIndexingTests.swift
+```
+
+---
+
+## Implementation Phases
+
+### Phase 1 — Foundation & Data Layer
+1. Configure `AuroraFeedFlowApp.swift`: inject `PersistenceController`, `AppEnvironment`, and `ThemeManager` as `@StateObject`/`@Environment` values; wire CloudKit container ID.
+2. Define `AppEnvironment.swift` as the global `ObservableObject` holding references to all services (FeedStore, SyncEngine, SearchEngine, ThemeManager, UserPreferences).
+3. Define CoreData model `AuroraFeedFlow.xcdatamodeld` with entities:
+   - `CDFeed` (id, title, url, faviconURL, unreadCount, lastRefreshed, folderID, sortOrder)
+   - `CDFeedItem` (id, feedID, title, url, author, publishedAt, summary, imageURL, isRead, isBookmarked, readingProgress)
+   - `CDFolder` (id, name, sortOrder)
+   - `CDCustomMenu` (id, name, iconName, colorHex, filterJSON, sortOrder)
+   - All entities use `NSPersistentCloudKitContainer` for iCloud sync.
+4. Implement `PersistenceController.swift` with `NSPersistentCloudKitContainer`, `.automaticallyMergesChangesFromParent = true`, `mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy`, background context for writes.
+5. Generate `CDFeed+CoreDataClass`, `CDFeedItem+CoreDataClass`, etc. with value-type bridging structs (`Feed`, `FeedItem`).
+
+### Phase 2 — Networking & Feed Parsing
+6. `NetworkClient.swift`: `async/await` URLSession wrapper, ETag/Last-Modified caching headers, configurable timeout, reachability guard.
+7. `NetworkReachability.swift`: `NWPathMonitor` published via Combine, offline mode flag.
+8. `FeedParserEngine.swift`: detects feed type (RSS/Atom/JSON) from `Content-Type` and XML root element; dispatches to specialized parser; returns `[FeedItem]`.
+9. `RSSParser.swift`: `XMLParserDelegate`-based, handles RSS 2.0, MediaRSS extensions.
+10. `AtomParser.swift`: Atom 1.0 parser.
+11. `JSONFeedParser.swift`: `Codable` JSON Feed 1.1 struct decoder.
+12. `OPMLParser.swift`: import/export OPML 2.0; generates `[Feed]` from outline elements.
+13. `ImageLoader.swift`: progressive image loading with `NSCache` + disk cache via `FileManager`.
+
+### Phase 3 — Theme System
+14. `ColorPalette.swift`: semantic color tokens (background, surface, primary, secondary, accent, separator, unreadIndicator) for light/dark/system. Palette inspired by FEEED's warm whites, slate grays, ink blacks.
+15. `Typography.swift`: font scale (headline, subheadline, body, caption, serif reader font), line height multipliers, dynamic type support.
+16. `ThemeManager.swift`: `@Observable`, persists theme choice, font family, font size, density; publishes changes.
+17. `AnimationConstants.swift`: spring constants (stiffness, damping), easing curves for cards, pull-to-dismiss, sidebar expand.
+
+### Phase 4 — Core Data Services
+18. `SearchEngine.swift`: `NSFetchRequest` with `NSPredicate` for title/author/description; `FuzzyMatcher` for scoring partial matches; publishes sorted results reactively.
+19. `BackgroundRefreshScheduler.swift`: register `BGAppRefreshTask`, schedule periodic refresh, invoke `FeedParserEngine` per feed, write to background CoreData context.
+20. `ChangeTracker.swift`: Combine `debounce(1.5s)` pipeline that coalesces read/unread/bookmark mutations before persisting — reduces CloudKit write rate.
+
+### Phase 5 — iCloud Sync
+21. `CloudKitSyncEngine.swift`: monitors `NSPersistentCloudKitContainer` import/export notifications; exposes sync state stream; triggers push notification subscription.
+22. `SyncConflictResolver.swift`: conflict policy — server wins for read/unread status; merge (union) for bookmarks; server wins for feed list. Writes resolved objects back to context.
+23. `SyncStatusMonitor.swift`: publishes `SyncStatus` enum (idle, syncing, error(String), lastSyncedAt) consumed by sync indicator in Settings.
+24. Handoff: implement `NSUserActivity` with `activityType = "com.aurora.readArticle"` carrying `articleURL` and `readingProgress`; `onContinueUserActivity` handler in `AuroraFeedFlowApp`.
+
+### Phase 6 — Sidebar & Navigation
+25. `AppCoordinator.swift`: `NavigationSplitView` root; sidebar → feed list → article reader. On iPad: three-column; on iPhone: navigation stack.
+26. `SidebarView.swift`: sections — All Feeds, Unread, Bookmarks, Trending; custom menus list (drag-to-reorder with `.onMove`); folder hierarchy with expand animation.
+27. `SidebarMenuRow.swift`: SF Symbol icon + custom color swatch + badge count; long-press context menu for edit/delete.
+
+### Phase 7 — Feed List & Article Reader
+28. `FeedListView.swift`: `LazyVStack` of `FeedCard`; section headers by recency (Today, Yesterday, This Week, Earlier); pull-to-refresh; swipe-to-mark-read; swipe-to-bookmark.
+29. `FeedCard.swift`: thumbnail (ProgressiveImageView), title (2-line truncated, headline font), feed name, time ago, unread indicator dot; card shadow via `CardShadowModifier`.
+30. `FeedListViewModel.swift`: Combine pipeline from CoreData `@FetchRequest` filtered by selected menu; maps to `[FeedItem]`; triggers refresh on appear.
+31. `ArticleReaderView.swift`: full-screen sheet with spring pull-to-dismiss (`DragGesture`); large serif title, metadata row, body text via `AttributedString` rendered in `Text` (native) or `WKWebView` for HTML articles; reading progress tracker.
+32. `ArticleWebView.swift`: `WKWebView` wrapped in `UIViewRepresentable`; injected CSS matching app typography; blocks external trackers.
+33. `ReaderToolbar.swift`: bookmark toggle, share sheet, open-in-safari, font size slider, text width toggle.
+
+### Phase 8 — Custom Menu Builder
+34. `MenuBuilderView.swift`: list of saved menus + "New Menu" button; drag-to-reorder (`.onMove`).
+35. `FilterEditorView.swift`: compose filters — feed selector, tag/category picker, date range (last 24h/week/all), read status toggle, minimum word count (long reads); previews matching count live.
+36. `MenuBuilderViewModel.swift`: builds `filterJSON` predicate string; validates; saves `CDCustomMenu`.
+37. `IconColorPicker.swift`: SF Symbol search grid + color wheel; outputs (iconName, colorHex) pair.
+
+### Phase 9 — Settings
+38. `SettingsView.swift`: grouped form — Reading, Appearance, Refresh, Sync, Data, About.
+39. `FontSettingsView.swift`: font family picker (System, New York, Palatino, Georgia), size stepper, line height slider, preview card.
+40. `SyncSettingsView.swift`: sync status indicator (animated pulse when syncing), last synced timestamp, "Sync Now" button, iCloud account status.
+
+### Phase 10 — OPML, Bookmarks, Search UI
+41. `OPMLImportView.swift`: `fileImporter` document picker for `.opml`; parse → preview feed list → confirm import.
+42. `OPMLExportView.swift`: generates OPML XML from `[CDFeed]`; `shareLink` to export.
+43. `BookmarksView.swift`: same card layout as feed list, filtered to `isBookmarked == true`; supports swipe-to-unbookmark.
+44. Global search: `NavigationSplitView` toolbar `.searchable(text:)` binding to `SearchEngine`; real-time results grouped by Feeds / Articles / Authors.
+
+### Phase 11 — iPad & Platform Polish
+45. `NavigationSplitView` with `.balanced` column width, always-visible sidebar on iPad landscape.
+46. Keyboard shortcuts: `⌘R` refresh, `⌘F` search, `⌘B` bookmark, `⌘[`/`⌘]` navigate articles, `⌘,` settings.
+47. Drag-and-drop: feeds draggable between folders (`onDrag`/`onDrop` with `NSItemProvider`).
+48. Stage Manager: `UIWindowScene` adaptive sizing, no hardcoded frame assumptions.
+49. Pencil: `PencilKit` canvas overlay on article for annotations (optional enhancement).
+
+### Phase 12 — Animations & Transitions
+50. Card appear: staggered `withAnimation(.spring(response:0.4, dampingFraction:0.7))` with delay per index.
+51. Pull-to-dismiss article: `DragGesture` → scale + opacity transition, spring return on cancel.
+52. Sidebar row expand: `withAnimation(.easeInOut(duration:0.25))` height transition.
+53. Unread badge: `.contentTransition(.numericText())` for count changes.
+54. Loading skeleton: `redacted(reason:.placeholder)` shimmer via `TimelineView`.
+
+### Phase 13 — Tests
+55. `FeedParserTests`: mock RSS/Atom/JSON feed strings → assert correct `FeedItem` fields, date parsing, empty feed handling.
+56. `SyncLogicTests`: mock `NSManagedObjectContext` → conflict resolution scenarios → assert expected merged state.
+57. `ViewModelTests`: `FeedListViewModel` with in-memory CoreData store → publish changes → assert `@Published` outputs via `XCTestExpectation`.
+58. `DatabaseIndexingTests`: insert 1000 items → measure `NSFetchRequest` execution time for search predicate < 100ms.
+
+### Phase 14 — Optional Enhancements (AI Features)
+59. AI Summaries: on-device `NaturalLanguage` framework extractive summarization; optional OpenAI API call for abstractive summary.
+60. Topic Clustering: `MLKit` or `CoreML` text embedding → k-means via `Accelerate`; surface as "Related" section in reader.
+61. Recommended Feeds: collaborative filtering based on read history stored locally.
+62. Feed Health Monitor: track HTTP status per feed URL over refresh history; alert on repeated 404/403.
+
+---
+
+## Critical Files to Modify
+
+- `AuroraFeedFlow/AuroraFeedFlow/AuroraFeedFlowApp.swift` — rewire entry point
+- `AuroraFeedFlow/AuroraFeedFlow/ContentView.swift` — replace with `AppCoordinator` host
+- All new files created under the module tree above
+
+## CoreData Schema (xcdatamodeld)
+
+```
+CDFeed
+  id: UUID (indexed)
+  title: String
+  feedURL: String (indexed)
+  siteURL: String?
+  faviconURL: String?
+  unreadCount: Int32
+  lastRefreshed: Date?
+  folderID: UUID?
+  sortOrder: Int32
+  isActive: Bool
+
+CDFeedItem
+  id: UUID (indexed)
+  feedID: UUID (indexed)
+  title: String (indexed)
+  articleURL: String
+  author: String?
+  publishedAt: Date (indexed)
+  summary: String?
+  bodyHTML: String?
+  imageURL: String?
+  isRead: Bool (indexed)
+  isBookmarked: Bool (indexed)
+  readingProgress: Double
+  wordCount: Int32
+  tags: String? (comma-separated, indexed)
+
+CDFolder
+  id: UUID (indexed)
+  name: String
+  sortOrder: Int32
+
+CDCustomMenu
+  id: UUID (indexed)
+  name: String
+  iconName: String
+  colorHex: String
+  filterJSON: String  ← serialized FilterSpec
+  sortOrder: Int32
+```
+
+## Theme Spec
+
+Typography:
+- Feed list title: `.headline` (SF Pro, semibold, 17pt)
+- Byline / time: `.caption` (SF Pro, regular, 12pt, secondary color)
+- Article title: Custom serif 28pt (New York / Georgia fallback)
+- Article body: 17pt, 1.6 line height, max width 680pt
+- Section header: `.subheadline` (SF Pro, medium, 13pt, all-caps)
+
+Color Palette (semantic tokens):
+- background: systemBackground / #1C1C1E
+- surface: secondarySystemBackground / #2C2C2E
+- primary: label / #FFFFFF
+- secondary: secondaryLabel
+- accent: #5E7CE2 (aurora blue)
+- unread: #5E7CE2
+- separator: separator / #38383A
+
+Card Style:
+- cornerRadius: 12pt
+- shadow: 0 2 12 rgba(0,0,0,0.08) light / 0 2 8 rgba(0,0,0,0.4) dark
+- padding: 16pt horizontal, 12pt vertical
+
+---
+
+## Verification Steps
+
+1. Build with `xcodebuild -scheme AuroraFeedFlow -destination 'platform=iOS Simulator,name=iPhone 16 Pro'` — zero errors.
+2. Add a real RSS URL (e.g. `https://feeds.feedburner.com/TechCrunch`) — feed parses and items appear in list.
+3. Mark item as read on iPhone simulator → kill app → relaunch → item remains read.
+4. Enable iCloud in simulator → verify `NSPersistentCloudKitContainer` syncs to second simulator.
+5. Run XCTest suite — all tests pass, search benchmark < 100ms for 1000 items.
+6. iPad split view: sidebar always visible in landscape, collapses in portrait.
+7. Pull-to-dismiss article sheet: spring animation plays correctly, returns on cancel.
+8. Custom menu with "Unread + last 24h" filter → correct items shown.
+9. OPML import test with sample file (BBC, Guardian feeds) → feeds added.
+10. Background refresh: send BGAppRefreshTask via device log → new items appear.
+
+---
+
+## Decisions
+- CloudKit via `NSPersistentCloudKitContainer` (not manual CKRecord) — reduces boilerplate, handles conflict notifications natively.
+- No third-party dependencies — pure Apple frameworks only (URLSession, XMLParser, CoreData, CloudKit, NaturalLanguage, BackgroundTasks, WebKit).
+- Swift 6 strict concurrency — all CoreData work on dedicated actor, UI on MainActor.
+- `@Observable` macro (iOS 17+) for ViewModels; `@FetchRequest` in views requiring live CoreData updates.
+- Minimum deployment target: iOS 17.0 / iPadOS 17.0.
+- Article rendering: native `AttributedString` in `Text` for plain-text content; `WKWebView` with injected CSS for HTML articles.
+- Offline mode: `NetworkReachability` gates all network calls; reads always served from CoreData.
